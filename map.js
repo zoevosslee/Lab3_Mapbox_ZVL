@@ -10,3 +10,31 @@ const map = new mapboxgl.Map({
   zoom: 11, // starting zoom (adjust it as you wish)
   projection: "globe", // display the map as a 3D globe
 });
+
+const layers = [
+    'HOLC Grade D'
+  ];
+  const colors = [
+    '#ba2921'
+  ];
+
+map.on('load', () => {
+    // create legend
+const legend = document.getElementById('legend');
+
+layers.forEach((layer, i) => {
+  const color = colors[i];
+  const item = document.createElement('div');
+  const key = document.createElement('span');
+  key.className = 'legend-key';
+  key.style.backgroundColor = color;
+
+  const value = document.createElement('span');
+  value.innerHTML = `${layer}`;
+  item.appendChild(key);
+  item.appendChild(value);
+  legend.appendChild(item);
+});
+
+  });
+
